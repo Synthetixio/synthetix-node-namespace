@@ -6,7 +6,7 @@
     "lint": "forge fmt",
     "test": "forge test",
     "codegen": "node codegen",
-    "deploy:sepolia": "CHAIN_ID=11155111 forge script script/NamespaceDeployment.s.sol --fork-url wss://ethereum-sepolia-rpc.publicnode.com --broadcast --verify -vv"
+    "deploy:sepolia": "forge clean && forge script script/NamespaceDeployment.s.sol --fork-url wss://optimism-sepolia-rpc.publicnode.com --broadcast --verify -vv"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.2.0",
