@@ -12,7 +12,7 @@ contract NamespaceDeployment is DeploymentScript {
     Namespace public namespace;
 
     function _run() internal override {
-        namespace = new Namespace(vm.addr(vm.envUint("PRIVATE_KEY")), vm.addr(vm.envUint("WHITELIST_ADDRESS")));
+        namespace = new Namespace(vm.addr(vm.envUint("PRIVATE_KEY")), vm.envAddress("WHITELIST_ADDRESS"));
         _deployedAddress("Namespace", address(namespace));
     }
 }
