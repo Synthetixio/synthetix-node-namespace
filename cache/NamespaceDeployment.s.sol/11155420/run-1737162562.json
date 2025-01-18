@@ -1,0 +1,7 @@
+{
+  "transactions": [
+    {
+      "rpc": "wss://optimism-sepolia-rpc.publicnode.com"
+    }
+  ]
+}

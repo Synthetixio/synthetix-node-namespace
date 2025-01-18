@@ -22,7 +22,7 @@ contract Namespace is ERC721, ERC721Enumerable, Ownable {
 
     function safeMint(string memory nameSpace) external {
         address to = _msgSender();
-        require(whitelist.hasRole(whitelist.GRANTED(), to), "Not allowed");
+        require(whitelist.isGranted(to), "Not allowed");
         require(bytes(nameSpace).length > 0, "Namespace cannot be empty");
         require(namespaceToTokenId[nameSpace] == 0, "Namespace is already taken");
 
@@ -40,9 +40,9 @@ contract Namespace is ERC721, ERC721Enumerable, Ownable {
     }
 
     function _update(address to, uint256 tokenId, address auth)
-        internal
-        override(ERC721, ERC721Enumerable)
-        returns (address)
+    internal
+    override(ERC721, ERC721Enumerable)
+    returns (address)
     {
         return super._update(to, tokenId, auth);
     }
