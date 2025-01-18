@@ -1,6 +1,6 @@
-exports.address = "0x4c306972aa3D8AE7f32B9E29dd48bacDa2c53A30";
+exports.address = "0x8899355C97cE2EED95F12B062478b7B05E9F0e0a";
 exports.abi = [
-  "constructor(address initialOwner)",
+  "constructor(address initialOwner, address whitelistAddress)",
   "function approve(address to, uint256 tokenId)",
   "function balanceOf(address owner) view returns (uint256)",
   "function getApproved(uint256 tokenId) view returns (address)",
@@ -14,6 +14,7 @@ exports.abi = [
   "function safeTransferFrom(address from, address to, uint256 tokenId)",
   "function safeTransferFrom(address from, address to, uint256 tokenId, bytes data)",
   "function setApprovalForAll(address operator, bool approved)",
+  "function setWhitelist(address _newWhitelistAddress)",
   "function supportsInterface(bytes4 interfaceId) view returns (bool)",
   "function symbol() view returns (string)",
   "function tokenByIndex(uint256 index) view returns (uint256)",
@@ -23,10 +24,12 @@ exports.abi = [
   "function totalSupply() view returns (uint256)",
   "function transferFrom(address from, address to, uint256 tokenId)",
   "function transferOwnership(address newOwner)",
+  "function whitelist() view returns (address)",
   "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
   "event ApprovalForAll(address indexed owner, address indexed operator, bool approved)",
   "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
   "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
+  "event WhitelistSet(address indexed newWhitelistAddress)",
   "error ERC721EnumerableForbiddenBatchMint()",
   "error ERC721IncorrectOwner(address sender, uint256 tokenId, address owner)",
   "error ERC721InsufficientApproval(address operator, uint256 tokenId)",
