@@ -1,4 +1,4 @@
-exports.address = "0x4432611C1D5120481f400056d3d6201438113C92";
+exports.address = "0x359384BFFAddE2aA48c43579D25729cd852DA3ab";
 exports.abi = [
   "constructor(address initialOwner, address whitelistAddress)",
   "function approve(address to, uint256 tokenId)",
