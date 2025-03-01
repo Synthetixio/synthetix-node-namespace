@@ -35,4 +35,5 @@ anvil
 ```sh
 cast wallet import test-deployer --interactive
 forge script ./script/deploy.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --account test-deployer 
+node codegen.js
 ```

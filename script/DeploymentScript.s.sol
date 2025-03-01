@@ -22,7 +22,7 @@ abstract contract DeploymentScript is Script {
         console.log("Deployed %s at %s", name, Strings.toHexString(uint160(addr), 20));
     }
 
-    function _deployPath() view internal returns (string memory deployPath) {
+    function _deployPath() internal view returns (string memory deployPath) {
         deployPath = string.concat("deployments_", Strings.toString(block.chainid), ".json");
     }
 

@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "forge build",
-    "lint": "forge fmt",
+    "lint": "biome check --write . && forge fmt",
     "test": "forge test",
     "codegen": "node codegen"
   },
@@ -20,6 +20,9 @@
     "@openzeppelin/contracts": "^5.2.0",
     "ethers": "^6.13.5",
     "forge-std": "github:foundry-rs/forge-std#master"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
   },
   "packageManager": "yarn@4.6.0"
 }
