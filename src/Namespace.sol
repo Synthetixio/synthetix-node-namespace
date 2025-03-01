@@ -16,7 +16,10 @@ contract Namespace is ERC721, ERC721Enumerable, Ownable {
 
     event WhitelistSet(address indexed newWhitelistAddress);
 
-    constructor(address initialOwner, address whitelistAddress) ERC721("Namespace Token", "NS") Ownable(initialOwner) {
+    constructor(address initialOwner, address whitelistAddress)
+        ERC721("Synthetix Node Namespace", "SNN")
+        Ownable(initialOwner)
+    {
         whitelist = Whitelist(whitelistAddress);
     }
 
@@ -40,9 +43,9 @@ contract Namespace is ERC721, ERC721Enumerable, Ownable {
     }
 
     function _update(address to, uint256 tokenId, address auth)
-    internal
-    override(ERC721, ERC721Enumerable)
-    returns (address)
+        internal
+        override(ERC721, ERC721Enumerable)
+        returns (address)
     {
         return super._update(to, tokenId, auth);
     }

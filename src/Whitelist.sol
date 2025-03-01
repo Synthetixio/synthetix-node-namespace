@@ -7,8 +7,8 @@ contract Whitelist is AccessControl {
     bytes32 public constant PENDING = "pending";
     bytes32 public constant GRANTED = "granted";
 
-    constructor() {
-        _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
+    constructor(address defaultAdmin) {
+        _grantRole(DEFAULT_ADMIN_ROLE, defaultAdmin);
     }
 
     function transferOwnership(address newOwner) public onlyRole(DEFAULT_ADMIN_ROLE) {

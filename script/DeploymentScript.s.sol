@@ -9,17 +9,9 @@ import {stdJson} from "forge-std/src/StdJson.sol";
 abstract contract DeploymentScript is Script {
     using stdJson for string;
 
-    string public DEPLOYMENTS_PATH = string.concat("deployments_", Strings.toString(vm.envUint("CHAIN_ID")), ".json");
-
     function run() external {
-        uint256 deployerPrivateKey_ = vm.envOr("PRIVATE_KEY", uint256(0));
-        if (deployerPrivateKey_ == 0) {
-            vm.startBroadcast();
-        } else {
-            vm.startBroadcast(deployerPrivateKey_);
-        }
+        vm.startBroadcast();
         _run();
-
         vm.stopBroadcast();
     }
 
@@ -30,16 +22,20 @@ abstract contract DeploymentScript is Script {
         console.log("Deployed %s at %s", name, Strings.toHexString(uint160(addr), 20));
     }
 
+    function _deployPath() view internal returns (string memory deployPath) {
+        deployPath = string.concat("deployments_", Strings.toString(block.chainid), ".json");
+    }
+
     function _writeDeployedAddress(string memory name, address addr) internal {
-        if (vm.isFile(DEPLOYMENTS_PATH)) {
-            vm.serializeJson("contracts", vm.readFile(DEPLOYMENTS_PATH));
+        if (vm.isFile(_deployPath())) {
+            vm.serializeJson("contracts", vm.readFile(_deployPath()));
         }
         string memory newJson = vm.serializeAddress("contracts", name, addr);
-        vm.writeJson(newJson, DEPLOYMENTS_PATH);
+        vm.writeJson(newJson, _deployPath());
     }
 
     function _getDeployedAddress(string memory name) internal view returns (address) {
-        string memory json = vm.readFile(DEPLOYMENTS_PATH);
+        string memory json = vm.readFile(_deployPath());
         string memory key = string.concat(".", name);
         return json.readAddress(key);
     }

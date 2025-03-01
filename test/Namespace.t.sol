@@ -24,7 +24,7 @@ contract NamespaceTest is Test {
         admin = vm.addr(3);
 
         vm.prank(owner);
-        whitelist = new Whitelist();
+        whitelist = new Whitelist(owner);
 
         vm.prank(owner);
         namespace = new Namespace(owner, address(whitelist));
