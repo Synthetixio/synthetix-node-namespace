@@ -1,16 +1,25 @@
 {
-  "name": "namespace",
-  "packageManager": "yarn@4.6.0",
+  "name": "@synthetixio/synthetix-node-namespace",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.js",
+  "files": [
+    "deployments",
+    "src",
+    "index.js"
+  ],
   "scripts": {
     "build": "forge build",
     "lint": "forge fmt",
     "test": "forge test",
-    "codegen": "node codegen",
-    "deploy:sepolia": "forge clean && forge script script/NamespaceDeployment.s.sol --fork-url wss://optimism-sepolia-rpc.publicnode.com --broadcast --verify -vv"
+    "codegen": "node codegen"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.2.0",
     "ethers": "^6.13.5",
     "forge-std": "github:foundry-rs/forge-std#master"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }
