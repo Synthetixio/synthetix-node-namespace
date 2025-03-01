@@ -4,10 +4,6 @@ const fs = require('node:fs').promises;
 const ethers = require('ethers');
 
 async function codegen({ chainId, contractName, contractAddress }) {
-  console.log(`Cleaning './deployments/${chainId}'`);
-  await fs.rm(`./deployments/${chainId}`, { force: true, recursive: true });
-  await fs.mkdir(`./deployments/${chainId}`, { recursive: true });
-
   const Contract = {
     address: contractAddress,
   };
@@ -71,6 +67,10 @@ async function main() {
   for (const file of deploymentsFiles) {
     const deployments = JSON.parse(await fs.readFile(`./${file.name}`, 'utf8'));
     const chainId = file.name.split('_')[1].split('.')[0];
+    console.log(`Cleaning './deployments/${chainId}'`);
+    await fs.rm(`./deployments/${chainId}`, { force: true, recursive: true });
+    await fs.mkdir(`./deployments/${chainId}`, { recursive: true });
+
     console.log(`Processing deployments for chainId ${chainId}`);
     for (const [contractName, contractAddress] of Object.entries(deployments)) {
       console.log(`Processing ${contractName}: ${contractAddress}`);

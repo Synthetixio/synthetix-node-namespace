@@ -33,7 +33,22 @@ anvil
 ### Deploy
 
 ```sh
-cast wallet import test-deployer --interactive
-forge script ./script/deploy.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --account test-deployer 
+cast wallet import snx-testnet --interactive
+
+_sender="$(cast wallet address --account snx-testnet)"
+
+forge script ./script/deploy.s.sol \
+  --rpc-url $RPC_OPTIMISM_SEPOLIA \
+  --account snx-testnet \
+  --sender "$_sender"
+
+forge script ./script/deploy.s.sol \
+  --rpc-url $RPC_OPTIMISM_SEPOLIA \
+  --broadcast \
+  --account snx-testnet \
+  --sender "$_sender"\
+  --etherscan-api-key $OPTIMISTIC_ETHERSCAN_API_KEY \
+  --verify
+
 node codegen.js
 ```
