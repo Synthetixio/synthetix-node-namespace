@@ -21,13 +21,11 @@
     "minor": "npm version minor",
     "major": "npm version major"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@openzeppelin/contracts": "^5.2.0",
     "ethers": "^6.13.5",
     "forge-std": "github:foundry-rs/forge-std#master"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
   },
   "packageManager": "yarn@4.6.0"
 }
