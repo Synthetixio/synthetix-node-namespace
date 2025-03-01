@@ -14,7 +14,12 @@
     "build": "forge build",
     "lint": "biome check --write . && forge fmt",
     "test": "forge test",
-    "codegen": "node codegen"
+    "codegen": "node codegen",
+    "postpublish": "git push --follow-tags",
+    "postversion": "npm publish",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.2.0",
